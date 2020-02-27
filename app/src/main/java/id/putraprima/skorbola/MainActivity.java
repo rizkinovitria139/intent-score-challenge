@@ -29,18 +29,9 @@ public class MainActivity extends AppCompatActivity {
     private static final int GALLERY_REQUEST_CODE=1&2;
 
     private ImageView avatar1, avatar2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        //TODO
-        //Fitur Main Activity
-        //1. Validasi Input Home Team
-        //2. Validasi Input Away Team
-        //3. Ganti Logo Home Team
-        //4. Ganti Logo Away Team
-        //5. Next Button Pindah Ke MatchActivity
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -52,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         avatar1 = (ImageView) findViewById(R.id.home_logo);
         avatar2 = (ImageView) findViewById(R.id.away_logo);
+
     }
 
     @Override
@@ -87,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //5. Next Button Pindah Ke MatchActivity
     public void handleNext(View view) {
         String home = homeTeamInput.getText().toString();
         String away = awayTeamInput.getText().toString();

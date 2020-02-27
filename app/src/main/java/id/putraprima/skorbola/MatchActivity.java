@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MatchActivity extends AppCompatActivity {
-
     private TextView homeTeamText;
     private TextView awayTeamText;
     private TextView homeScore;
@@ -20,16 +19,14 @@ public class MatchActivity extends AppCompatActivity {
     int away;
     public static final String WIN_KEY="win";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match);
         //TODO
         //1.Menampilkan detail match sesuai data dari main activity
-        //2.Tombol add score menambahkan memindah activity ke scorerActivity dimana pada scorer activity di isikan nama pencetak gol
-        //3.Dari activity scorer akan mengirim kembali ke activity matchactivity otomatis nama pencetak gol dan skor bertambah +1
-        //4.Tombol Cek Result menghitung pemenang dari kedua tim dan mengirim nama pemenang beserta nama pencetak gol ke ResultActivity, jika seri di kirim text "Draw",
+        //2.Tombol add score menambahkan satu angka dari angka 0, setiap kali di tekan
+        //3.Tombol Cek Result menghitung pemenang dari kedua tim dan mengirim nama pemenang ke ResultActivity, jika seri di kirim text "Draw"
 
         homeTeamText = findViewById(R.id.txt_home);
         awayTeamText = findViewById(R.id.txt_away);
@@ -50,6 +47,7 @@ public class MatchActivity extends AppCompatActivity {
             awayTeamText.setText(extras.getString(MainActivity.AWAY_KEY));
             //receive img
         }
+
     }
 
     public void handleResult(View view) {

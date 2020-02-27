@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 public class ResultActivity extends AppCompatActivity {
     private TextView winTeamText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
