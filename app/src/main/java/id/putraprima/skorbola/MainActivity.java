@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Bundle extras = getIntent().getExtras();
-//        byte[] byteArray = extras.getByteArray("picture");
+        byte[] byteArray = extras.getByteArray("picture");
 
         homeTeamInput = (EditText) findViewById(R.id.home_team);
         awayTeamInput = (EditText) findViewById(R.id.away_team);
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
             intent.putExtras(extras);
             intent.putExtra(HOME_KEY, home);
-            intent.putExtra(HOME_KEY, away);
+            intent.putExtra(AWAY_KEY, away);
             startActivity(intent);
         }
     }

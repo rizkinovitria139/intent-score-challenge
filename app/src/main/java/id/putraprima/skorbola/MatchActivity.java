@@ -61,16 +61,16 @@ public class MatchActivity extends AppCompatActivity {
             return;
         }
 
-        if(requestCode == 2){
+        if(requestCode == 1){
             if(data != null){
-                home = Integer.parseInt(homeScore.getText().toString());
+//                home = Integer.parseInt(homeScore.getText().toString());
                 home++;
                 homeScore.setText(" "+home);
             }
         }
-        if(requestCode == 1){
+        if(requestCode == 2){
             if(data!= null){
-                away = Integer.parseInt(awayScore.getText().toString());
+//                away = Integer.parseInt(awayScore.getText().toString());
                 away++;
                 awayScore.setText(" "+away);
             }
@@ -92,11 +92,11 @@ public class MatchActivity extends AppCompatActivity {
 
     public void handleAddAway(View view) {
         Intent intent = new Intent(this, ScorerActivity.class);
-        startActivityForResult(intent, 1);
+        startActivityForResult(intent, 2);
     }
 
     public void handleAddHome(View view) {
         Intent intent = new Intent(this, ScorerActivity.class);
-        startActivityForResult(intent, 2);
+        startActivityForResult(intent, 1);
     }
 }
