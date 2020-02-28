@@ -64,12 +64,18 @@ public class MatchActivity extends AppCompatActivity {
     }
 
     public void handleAddAway(View view) {
+        Intent intent = new Intent(this, ScorerActivity.class);
+        startActivity(intent);
+
         away = Integer.parseInt(awayScore.getText().toString());
         away++;
         awayScore.setText(""+away);
     }
 
     public void handleAddHome(View view) {
+        Intent intent = new Intent(this, ScorerActivity.class);
+        startActivity(intent);
+
         home = Integer.parseInt(homeScore.getText().toString());
         home++;
         homeScore.setText(""+home);
