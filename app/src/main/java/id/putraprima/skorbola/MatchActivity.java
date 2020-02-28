@@ -1,5 +1,6 @@
 package id.putraprima.skorbola;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -30,8 +31,10 @@ public class MatchActivity extends AppCompatActivity {
 
         homeTeamText = findViewById(R.id.txt_home);
         awayTeamText = findViewById(R.id.txt_away);
+
         homeScore = findViewById(R.id.score_home);
         awayScore = findViewById(R.id.score_away);
+
         avatar1 = findViewById(R.id.home_logo);
         avatar2 = findViewById(R.id.away_logo);
 
@@ -50,6 +53,30 @@ public class MatchActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == 0){
+            return;
+        }
+
+        if(requestCode == 2){
+            if(data != null){
+                home = Integer.parseInt(homeScore.getText().toString());
+                home++;
+                homeScore.setText(" "+home);
+            }
+        }
+        if(requestCode == 1){
+            if(data!= null){
+                away = Integer.parseInt(awayScore.getText().toString());
+                away++;
+                awayScore.setText(" "+away);
+            }
+        }
+    }
+
     public void handleResult(View view) {
         Intent intent = new Intent(this, ResultActivity.class);
 
@@ -65,19 +92,11 @@ public class MatchActivity extends AppCompatActivity {
 
     public void handleAddAway(View view) {
         Intent intent = new Intent(this, ScorerActivity.class);
-        startActivity(intent);
-
-        away = Integer.parseInt(awayScore.getText().toString());
-        away++;
-        awayScore.setText(""+away);
+        startActivityForResult(intent, 1);
     }
 
     public void handleAddHome(View view) {
         Intent intent = new Intent(this, ScorerActivity.class);
-        startActivity(intent);
-
-        home = Integer.parseInt(homeScore.getText().toString());
-        home++;
-        homeScore.setText(""+home);
+        startActivityForResult(intent, 2);
     }
 }

@@ -1,17 +1,20 @@
 package id.putraprima.skorbola;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class ScorerActivity extends AppCompatActivity {
     private EditText scorerName;
-    int score;
 
     public static final String SCORER_KEY="scorer";
+
+    public static final int SCORER_REQUEST_CODE=1&2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,15 +22,17 @@ public class ScorerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_scorer);
 
         scorerName = findViewById(R.id.scorerNameInput);
+
     }
 
     public void handleAddScore(View view) {
         String scorer = scorerName.getText().toString();
 
-//        score = Integer.parseInt(awayScore.getText().toString());
-
         Intent intent = new Intent(this, MatchActivity.class);
         intent.putExtra(SCORER_KEY, scorer);
-        startActivity(intent);
+        setResult(MatchActivity.RESULT_OK, intent);
+        finish();
     }
+
+
 }
