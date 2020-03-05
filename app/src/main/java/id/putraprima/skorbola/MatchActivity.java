@@ -15,9 +15,15 @@ public class MatchActivity extends AppCompatActivity {
     private TextView awayTeamText;
     private TextView homeScore;
     private TextView awayScore;
+    private TextView homeScorer;
+    private TextView awayScorer;
+
     private ImageView avatar1, avatar2;
     int home;
     int away;
+    String returnString;
+    String name="";
+
     public static final String WIN_KEY="win";
 
     @Override
@@ -35,6 +41,9 @@ public class MatchActivity extends AppCompatActivity {
         homeScore = findViewById(R.id.score_home);
         awayScore = findViewById(R.id.score_away);
 
+        homeScorer = findViewById(R.id.homeScorer);
+        awayScorer = findViewById(R.id.awayScorer);
+
         avatar1 = findViewById(R.id.home_logo);
         avatar2 = findViewById(R.id.away_logo);
 
@@ -48,6 +57,7 @@ public class MatchActivity extends AppCompatActivity {
             avatar2.setImageBitmap(bmp2);
             homeTeamText.setText(extras.getString(MainActivity.HOME_KEY));
             awayTeamText.setText(extras.getString(MainActivity.AWAY_KEY));
+            homeScorer.setText(extras.getString(ScorerActivity.SCORER_KEY));
             //receive img
         }
 
@@ -63,16 +73,24 @@ public class MatchActivity extends AppCompatActivity {
 
         if(requestCode == 1){
             if(data != null){
-//                home = Integer.parseInt(homeScore.getText().toString());
                 home++;
                 homeScore.setText(" "+home);
+
+                returnString = data.getStringExtra("scorer");
+                name = returnString + "\n"+homeScorer.getText().toString();
+                homeScorer.setText(name);
+
             }
         }
         if(requestCode == 2){
             if(data!= null){
-//                away = Integer.parseInt(awayScore.getText().toString());
                 away++;
                 awayScore.setText(" "+away);
+
+                returnString = data.getStringExtra("scorer");
+                name = returnString + "\n"+awayScorer.getText().toString();
+                awayScorer.setText(name);
+
             }
         }
     }
@@ -81,9 +99,9 @@ public class MatchActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ResultActivity.class);
 
         if(away > home){
-            intent.putExtra(WIN_KEY, "Selamat "+awayTeamText.getText().toString());
+            intent.putExtra(WIN_KEY, "Selamat "+awayTeamText.getText().toString()+"\nScorer Name \n:" +awayScorer.getText().toString());
         }else if(away < home){
-            intent.putExtra(WIN_KEY, "Selamat "+homeTeamText.getText().toString());
+            intent.putExtra(WIN_KEY, "Selamat "+homeTeamText.getText().toString()+"\nScorer Name : \n"+homeScorer.getText().toString());
         }else{
             intent.putExtra(WIN_KEY, "Seri!");
         }
