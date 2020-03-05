@@ -20,7 +20,6 @@ public class ResultActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if(extras != null){
             winTeamText.setText(extras.getString(MatchActivity.WIN_KEY));
-//            scorerName.setText(extras.getString(ScorerActivity.SCORER_KEY));
         }
     }
 }

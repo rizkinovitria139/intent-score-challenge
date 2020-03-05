@@ -99,9 +99,9 @@ public class MatchActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ResultActivity.class);
 
         if(away > home){
-            intent.putExtra(WIN_KEY, "Selamat "+awayTeamText.getText().toString()+"\nScorer Name \n:" +awayScorer.getText().toString());
+            intent.putExtra(WIN_KEY, "Selamat "+awayTeamText.getText().toString()+"\nScorer Name : " +awayScorer.getText().toString());
         }else if(away < home){
-            intent.putExtra(WIN_KEY, "Selamat "+homeTeamText.getText().toString()+"\nScorer Name : \n"+homeScorer.getText().toString());
+            intent.putExtra(WIN_KEY, "Selamat "+homeTeamText.getText().toString()+"\nScorer Name : "+homeScorer.getText().toString());
         }else{
             intent.putExtra(WIN_KEY, "Seri!");
         }
